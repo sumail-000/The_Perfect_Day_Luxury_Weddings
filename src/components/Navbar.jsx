@@ -24,12 +24,12 @@ export default function Navbar() {
           : "bg-gradient-to-b from-black/40 to-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-10">
         <a href="#" className="flex items-center">
           <img
             src="/logo.png"
             alt="The Perfect Day"
-            className={`h-12 w-auto object-contain md:h-14 transition-all duration-300 ${atTop ? "brightness-0 invert" : ""}`}
+            className={`h-9 w-auto object-contain sm:h-11 md:h-12 transition-all duration-300 ${atTop ? "brightness-0 invert" : ""}`}
           />
         </a>
 

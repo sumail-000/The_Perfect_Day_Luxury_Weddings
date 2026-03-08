@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <img src="/logo.png" alt="The Perfect Day" className="h-10 w-auto object-contain brightness-0 invert opacity-90 sm:h-12 lg:h-14" />
+            <img src="/logo.png" alt="The Perfect Day" className="h-22 w-auto object-contain brightness-0 invert opacity-90 sm:h-12 lg:h-14" />
             <p className="mt-5 max-w-sm font-body text-sm leading-7 text-white/55">
               Ultra-luxury wedding and event planning across Ras Al Khaimah, Dubai and destination
               venues. We craft bespoke celebrations with a feminine signature.
