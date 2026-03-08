@@ -18,7 +18,7 @@ function ServiceSection({ id, bgClass, scriptClass, scriptText, heading, service
   return (
     <section id={id} className={bgClass}>
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
-        <div className="mb-10 grid gap-6 lg:mb-16 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div data-reveal="up" className="mb-10 grid gap-6 lg:mb-16 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-3xl">
             <div className={`font-script text-4xl sm:text-5xl ${scriptClass}`}>{scriptText}</div>
             <h2 className="mt-1 font-display text-3xl font-semibold text-[#49353d] sm:text-4xl md:text-5xl lg:text-6xl">
@@ -32,8 +32,10 @@ function ServiceSection({ id, bgClass, scriptClass, scriptText, heading, service
           )}
         </div>
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
-          {services.map((item) => (
-            <ServiceCard key={item.title} icon={icon} title={item.title} desc={item.desc} accent={accent} />
+          {services.map((item, i) => (
+            <div key={item.title} data-reveal="up-sm" data-delay={String(i * 150)}>
+              <ServiceCard icon={icon} title={item.title} desc={item.desc} accent={accent} />
+            </div>
           ))}
         </div>
       </div>

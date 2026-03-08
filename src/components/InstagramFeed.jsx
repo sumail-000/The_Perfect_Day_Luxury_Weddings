@@ -6,7 +6,7 @@ export default function InstagramFeed() {
     <section className="bg-[#111111] text-white">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-14">
-          <div>
+          <div data-reveal="left">
             <div className="font-script text-4xl text-[#f0b7c8] sm:text-5xl md:text-6xl">
               Instagram Style Feed
             </div>
@@ -44,6 +44,8 @@ export default function InstagramFeed() {
             {INSTAGRAM_IMAGES.map((image, index) => (
               <a
                 key={index}
+                data-reveal="scale"
+                data-delay={String(index * 100)}
                 href="https://instagram.com/tpdweddings"
                 target="_blank"
                 rel="noopener noreferrer"

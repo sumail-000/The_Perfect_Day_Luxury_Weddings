@@ -5,9 +5,9 @@ export default function Footer() {
   return (
     <footer className="bg-[#110d0f] text-white">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-reveal="up" className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <img src="/logo.png" alt="The Perfect Day" className="h-22 w-auto object-contain brightness-0 invert opacity-90 sm:h-12 lg:h-14" />
+            <img src="/logo.png" alt="The Perfect Day" className="h-12 w-auto object-contain brightness-0 invert opacity-90 sm:h-14 lg:h-[5.5rem]" />
             <p className="mt-5 max-w-sm font-body text-sm leading-7 text-white/55">
               Ultra-luxury wedding and event planning across Ras Al Khaimah, Dubai and destination
               venues. We craft bespoke celebrations with a feminine signature.
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-center md:flex-row md:text-left">
+        <div data-reveal="fade" data-delay="200" className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-center md:flex-row md:text-left">
           <div className="font-script-soft text-3xl text-[#eab0c3]">The Perfect Day</div>
           <p className="flex items-center gap-1.5 font-body text-xs text-white/35">
             Wedding & Event Planners · Ras Al Khaimah · UAE

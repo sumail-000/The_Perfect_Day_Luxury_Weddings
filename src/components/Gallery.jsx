@@ -4,13 +4,12 @@ import { GALLERY_ITEMS } from "../data/content";
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState(null);
-
   const prev = () => setLightbox((i) => (i === 0 ? GALLERY_ITEMS.length - 1 : i - 1));
   const next = () => setLightbox((i) => (i === GALLERY_ITEMS.length - 1 ? 0 : i + 1));
 
   return (
     <section id="gallery" className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
-      <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
+      <div data-reveal="up" className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
         <div className="max-w-3xl">
           <div className="font-script-soft text-4xl text-[#e5a4b7] sm:text-5xl md:text-6xl">
             Signature Gallery
@@ -31,6 +30,8 @@ export default function Gallery() {
         {GALLERY_ITEMS.map((item, idx) => (
           <div
             key={item.title}
+            data-reveal="scale"
+            data-delay={String((idx % 3) * 100)}
             className="group mb-5 cursor-pointer overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_60px_rgba(202,178,188,0.18)] break-inside-avoid transition hover:shadow-[0_30px_80px_rgba(202,178,188,0.30)]"
             onClick={() => setLightbox(idx)}
           >

@@ -14,27 +14,27 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(235,188,205,0.12),transparent_50%)]" />
 
       <div className="relative flex min-h-screen flex-col items-center justify-center px-5 pt-28 pb-16 text-center sm:px-8 lg:px-10">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-body text-[10px] uppercase tracking-[0.3em] text-white/80 backdrop-blur-sm sm:mb-8 sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.4em]">
+        <div className="hero-enter hero-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-body text-[10px] uppercase tracking-[0.3em] text-white/80 backdrop-blur-sm sm:mb-8 sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.4em]" style={{ animationDuration: '900ms', animationDelay: '100ms' }}>
           <Gem className="h-3 w-3 text-[#f0b7c8]" />
           Bespoke Social Experience · UAE
         </div>
 
-        <div className="font-script mb-2 text-4xl text-[#f0c8d8] drop-shadow-lg sm:text-5xl md:text-7xl lg:text-8xl">
+        <div className="hero-enter hero-fade-up font-script mb-2 text-4xl text-[#f0c8d8] drop-shadow-lg sm:text-5xl md:text-7xl lg:text-8xl" style={{ animationDuration: '1000ms', animationDelay: '300ms' }}>
           The art of a beautiful celebration
         </div>
 
-        <h1 className="mt-3 max-w-5xl font-display text-2xl font-semibold leading-tight text-white sm:text-3xl md:text-5xl lg:text-7xl">
+        <h1 className="hero-enter hero-fade-up mt-3 max-w-5xl font-display text-2xl font-semibold leading-tight text-white sm:text-3xl md:text-5xl lg:text-7xl" style={{ animationDuration: '1000ms', animationDelay: '500ms' }}>
           Ultra-luxury weddings and graceful social events with a{" "}
           <em className="not-italic text-[#f0b7c8]">feminine signature.</em>
         </h1>
 
-        <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-white/75 sm:text-base md:mt-7 md:text-lg md:leading-8">
+        <p className="hero-enter hero-fade-up mt-5 max-w-2xl font-body text-sm leading-7 text-white/75 sm:text-base md:mt-7 md:text-lg md:leading-8" style={{ animationDuration: '900ms', animationDelay: '650ms' }}>
           The Perfect Day crafts intimate, elegant and deeply personalized celebrations across
           Ras Al Khaimah, Dubai and destination settings — blending hospitality, décor, emotion
           and seamless planning into moments that feel soft, luxurious and unforgettable.
         </p>
 
-        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+        <div className="hero-enter hero-fade-up mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4" style={{ animationDuration: '900ms', animationDelay: '800ms' }}>
           <a href="#inquiry" className="btn-primary w-full px-8 py-3.5 text-sm shadow-2xl sm:w-auto sm:px-9 sm:py-4 sm:text-base">
             Start Your Bridal Inquiry
           </a>
@@ -46,7 +46,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-3 md:mt-14 md:gap-6">
+        <div className="hero-enter hero-fade-in mt-8 flex flex-wrap justify-center gap-3 md:mt-14 md:gap-6" style={{ animationDuration: '1000ms', animationDelay: '1000ms' }}>
           {["Luxury Weddings", "Feminine Styling", "UAE & Destination Events"].map((tag) => (
             <div
               key={tag}

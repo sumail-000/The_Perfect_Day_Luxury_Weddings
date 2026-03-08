@@ -4,10 +4,9 @@ import { FAQS } from "../data/content";
 
 export default function FAQ() {
   const [open, setOpen] = useState(null);
-
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
-      <div className="mb-8 max-w-3xl md:mb-14">
+      <div data-reveal="up" className="mb-8 max-w-3xl md:mb-14">
         <div className="font-script-soft text-4xl text-[#e2a0b4] sm:text-5xl md:text-6xl">
           Frequently Asked Questions
         </div>
@@ -20,6 +19,8 @@ export default function FAQ() {
         {FAQS.map((item, idx) => (
           <div
             key={item.q}
+            data-reveal="up-sm"
+            data-delay={String(idx * 80)}
             className="overflow-hidden rounded-[2rem] border border-[#f0e1e7] bg-white shadow-sm transition-shadow hover:shadow-md"
           >
             <button

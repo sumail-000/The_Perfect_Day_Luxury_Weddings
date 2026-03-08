@@ -8,8 +8,10 @@ import InstagramFeed from "./components/InstagramFeed";
 import FAQ from "./components/FAQ";
 import InquiryForm from "./components/InquiryForm";
 import Footer from "./components/Footer";
+import { useReveal } from "./hooks/useReveal";
 
 function App() {
+  useReveal();
   return (
     <div className="min-h-screen bg-[#fffaf8] text-[#3c2d31]">
       <Navbar />

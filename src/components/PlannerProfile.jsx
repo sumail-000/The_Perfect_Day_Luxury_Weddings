@@ -5,7 +5,7 @@ export default function PlannerProfile() {
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
-          <div className="relative mb-10 sm:mb-0">
+          <div data-reveal="left" className="relative mb-10 sm:mb-0">
             <div className="overflow-hidden rounded-[3rem] shadow-[0_40px_100px_rgba(195,145,164,0.22)]">
               <img
                 src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=900&q=85"
@@ -21,7 +21,7 @@ export default function PlannerProfile() {
             </div>
           </div>
 
-          <div>
+          <div data-reveal="right">
             <div className="font-script text-4xl text-[#e5a6b9] sm:text-5xl md:text-6xl">Chief Planner</div>
             <h2 className="mt-2 font-display text-3xl font-semibold text-[#47363c] sm:text-4xl md:text-5xl lg:text-6xl">
               Navdeep Tanwar
@@ -31,9 +31,11 @@ export default function PlannerProfile() {
             </div>
 
             <div className="mt-6 grid grid-cols-3 gap-3">
-              {STATS.map((item) => (
+              {STATS.map((item, i) => (
                 <div
                   key={item.label}
+                  data-reveal="scale"
+                  data-delay={String(i * 150)}
                   className="rounded-[1.75rem] border border-[#f1e4ea] bg-[#fdf7f9] p-5 text-center shadow-sm"
                 >
                   <div className="font-display text-2xl font-semibold text-[#4b3a40] sm:text-3xl md:text-4xl">

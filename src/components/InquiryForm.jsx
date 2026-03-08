@@ -19,7 +19,7 @@ export default function InquiryForm() {
     <section id="inquiry" className="bg-gradient-to-br from-[#f9edf2] via-[#fffaf9] to-[#ecf9f8]">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div>
+          <div data-reveal="left">
             <div className="font-script text-5xl text-[#e4a7b9] sm:text-6xl">Bridal Inquiry</div>
             <h2 className="mt-2 font-display text-3xl font-semibold text-[#47363c] sm:text-4xl md:text-5xl lg:text-6xl">
               Begin your journey with The Perfect Day.
@@ -74,7 +74,7 @@ export default function InquiryForm() {
             </div>
           </div>
 
-          <div className="rounded-[1.5rem] border border-white/80 bg-white p-5 shadow-[0_25px_80px_rgba(184,151,168,0.16)] sm:rounded-[2rem] sm:p-8 lg:rounded-[2.5rem] lg:p-10">
+          <div data-reveal="right" className="rounded-[1.5rem] border border-white/80 bg-white p-5 shadow-[0_25px_80px_rgba(184,151,168,0.16)] sm:rounded-[2rem] sm:p-8 lg:rounded-[2.5rem] lg:p-10">
             {submitted ? (
               <div className="flex flex-col items-center justify-center py-16 text-center">
                 <div className="font-script text-6xl text-[#e4a7b9]">Thank You</div>
