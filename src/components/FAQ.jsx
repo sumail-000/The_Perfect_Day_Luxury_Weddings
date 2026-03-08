@@ -6,12 +6,12 @@ export default function FAQ() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
-      <div className="mb-14 max-w-3xl">
-        <div className="font-script-soft text-5xl text-[#e2a0b4] md:text-6xl">
+    <section className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
+      <div className="mb-8 max-w-3xl md:mb-14">
+        <div className="font-script-soft text-4xl text-[#e2a0b4] sm:text-5xl md:text-6xl">
           Frequently Asked Questions
         </div>
-        <h2 className="mt-2 font-display text-4xl font-semibold text-[#49353d] md:text-5xl lg:text-6xl">
+        <h2 className="mt-1 font-display text-3xl font-semibold text-[#49353d] sm:text-4xl md:text-5xl lg:text-6xl">
           Everything couples and families often ask us.
         </h2>
       </div>
@@ -24,9 +24,9 @@ export default function FAQ() {
           >
             <button
               onClick={() => setOpen(open === idx ? null : idx)}
-              className="flex w-full items-center justify-between gap-4 p-7 text-left"
+              className="flex w-full items-center justify-between gap-3 p-5 text-left sm:gap-4 sm:p-7"
             >
-              <h3 className="font-display text-2xl font-semibold text-[#4a3a40] md:text-3xl">
+              <h3 className="font-display text-xl font-semibold text-[#4a3a40] sm:text-2xl md:text-3xl">
                 {item.q}
               </h3>
               <ChevronDown
@@ -37,10 +37,10 @@ export default function FAQ() {
             </button>
             <div
               className={`overflow-hidden transition-all duration-300 ${
-                open === idx ? "max-h-48 pb-7" : "max-h-0"
+                open === idx ? "max-h-64 pb-5 sm:pb-7" : "max-h-0"
               }`}
             >
-              <p className="px-7 font-body text-base leading-8 text-[#6a5b63]">{item.a}</p>
+              <p className="px-5 font-body text-sm leading-7 text-[#6a5b63] sm:px-7 sm:text-base sm:leading-8">{item.a}</p>
             </div>
           </div>
         ))}

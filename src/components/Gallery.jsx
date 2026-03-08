@@ -9,13 +9,13 @@ export default function Gallery() {
   const next = () => setLightbox((i) => (i === GALLERY_ITEMS.length - 1 ? 0 : i + 1));
 
   return (
-    <section id="gallery" className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
-      <div className="mb-14 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+    <section id="gallery" className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
+      <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
         <div className="max-w-3xl">
-          <div className="font-script-soft text-5xl text-[#e5a4b7] md:text-6xl">
+          <div className="font-script-soft text-4xl text-[#e5a4b7] sm:text-5xl md:text-6xl">
             Signature Gallery
           </div>
-          <h2 className="mt-2 font-display text-4xl font-semibold text-[#46353b] md:text-5xl lg:text-6xl">
+          <h2 className="mt-1 font-display text-3xl font-semibold text-[#46353b] sm:text-4xl md:text-5xl lg:text-6xl">
             A visual moodboard of the experiences we create.
           </h2>
         </div>
@@ -27,7 +27,7 @@ export default function Gallery() {
         </a>
       </div>
 
-      <div className="columns-1 gap-5 sm:columns-2 xl:columns-3">
+      <div className="columns-1 gap-4 sm:columns-2 sm:gap-5 xl:columns-3">
         {GALLERY_ITEMS.map((item, idx) => (
           <div
             key={item.title}
@@ -39,7 +39,7 @@ export default function Gallery() {
                 src={item.image}
                 alt={item.title}
                 className="w-full object-cover transition duration-700 group-hover:scale-105"
-                style={{ height: idx % 3 === 0 ? "420px" : "300px" }}
+                style={{ height: idx % 3 === 0 ? "clamp(240px, 40vw, 420px)" : "clamp(180px, 30vw, 300px)" }}
               />
             </div>
             <div className="p-6">
@@ -59,12 +59,12 @@ export default function Gallery() {
         >
           <button
             onClick={(e) => { e.stopPropagation(); prev(); }}
-            className="absolute left-4 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
+            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:left-4 sm:p-3"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
           <div
-            className="relative max-h-[90vh] max-w-4xl overflow-hidden rounded-[2rem]"
+            className="relative mx-10 max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-[1.5rem] sm:mx-16 sm:rounded-[2rem]"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -81,7 +81,7 @@ export default function Gallery() {
           </div>
           <button
             onClick={(e) => { e.stopPropagation(); next(); }}
-            className="absolute right-4 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:right-4 sm:p-3"
           >
             <ChevronRight className="h-6 w-6" />
           </button>

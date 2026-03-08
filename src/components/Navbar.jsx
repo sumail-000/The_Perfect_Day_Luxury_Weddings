@@ -5,33 +5,41 @@ import { NAV_LINKS } from "../data/content";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [atTop, setAtTop] = useState(true);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      setAtTop(window.scrollY < 10);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_2px_30px_rgba(195,145,164,0.15)]"
-          : "bg-transparent"
+          : "bg-gradient-to-b from-black/40 to-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <a href="#" className="flex items-center gap-3">
+        <a href="#" className="flex items-center">
           <img
             src="/logo.png"
             alt="The Perfect Day"
-            className="h-14 w-auto object-contain md:h-16"
+            className={`h-12 w-auto object-contain md:h-14 transition-all duration-300 ${atTop ? "brightness-0 invert" : ""}`}
           />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((item) => (
-            <a key={item.label} href={item.href} className="nav-link font-medium tracking-wide">
+            <a key={item.label} href={item.href}
+              className={`font-body text-sm font-medium tracking-wide transition-colors duration-200 ${
+                scrolled ? "text-[#7b5e67] hover:text-[#0fb7b1]" : "text-white/90 hover:text-white"
+              }`}
+            >
               {item.label}
             </a>
           ))}
@@ -51,7 +59,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-xl p-2 text-[#7b5e67] md:hidden"
+          className={`rounded-xl p-2 md:hidden transition-colors duration-200 ${scrolled ? "text-[#7b5e67]" : "text-white"}`}
           aria-label="Toggle menu"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

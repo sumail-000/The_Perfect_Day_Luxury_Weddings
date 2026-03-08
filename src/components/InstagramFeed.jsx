@@ -4,16 +4,16 @@ import { INSTAGRAM_IMAGES } from "../data/content";
 export default function InstagramFeed() {
   return (
     <section className="bg-[#111111] text-white">
-      <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
-        <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-14">
           <div>
-            <div className="font-script text-5xl text-[#f0b7c8] md:text-6xl">
+            <div className="font-script text-4xl text-[#f0b7c8] sm:text-5xl md:text-6xl">
               Instagram Style Feed
             </div>
-            <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl lg:text-6xl">
+            <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
               Soft, editorial, scroll-worthy moments.
             </h2>
-            <p className="mt-6 max-w-xl font-body text-lg leading-8 text-white/70">
+            <p className="mt-4 max-w-xl font-body text-base leading-7 text-white/70 md:text-lg md:leading-8">
               Follow our curated social showcase — luxury bridal styling, behind-the-scenes
               planning, client moments and décor details from real celebrations.
             </p>
@@ -40,7 +40,7 @@ export default function InstagramFeed() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {INSTAGRAM_IMAGES.map((image, index) => (
               <a
                 key={index}
@@ -53,7 +53,7 @@ export default function InstagramFeed() {
                   <img
                     src={image}
                     alt={`Instagram moment ${index + 1}`}
-                    className="h-40 w-full object-cover transition duration-700 group-hover:scale-110 sm:h-48"
+                    className="h-32 w-full object-cover transition duration-700 group-hover:scale-110 sm:h-40 md:h-48"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/30">
                     <Instagram className="h-6 w-6 text-white opacity-0 transition duration-300 group-hover:opacity-100" />

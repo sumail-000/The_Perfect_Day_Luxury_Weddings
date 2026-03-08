@@ -17,26 +17,26 @@ export default function InquiryForm() {
 
   return (
     <section id="inquiry" className="bg-gradient-to-br from-[#f9edf2] via-[#fffaf9] to-[#ecf9f8]">
-      <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
-            <div className="font-script text-6xl text-[#e4a7b9]">Bridal Inquiry</div>
-            <h2 className="mt-2 font-display text-4xl font-semibold text-[#47363c] md:text-5xl lg:text-6xl">
+            <div className="font-script text-5xl text-[#e4a7b9] sm:text-6xl">Bridal Inquiry</div>
+            <h2 className="mt-2 font-display text-3xl font-semibold text-[#47363c] sm:text-4xl md:text-5xl lg:text-6xl">
               Begin your journey with The Perfect Day.
             </h2>
-            <p className="mt-6 font-body text-lg leading-8 text-[#73646b]">
+            <p className="mt-4 font-body text-base leading-7 text-[#73646b] md:text-lg md:leading-8">
               Tell us about your wedding vision, celebration dates, destination preferences, guest
               count and design style. We will curate a planning experience that feels graceful,
               calm and truly bespoke.
             </p>
 
-            <div className="mt-10 space-y-5 rounded-[2rem] bg-white p-8 shadow-lg">
+            <div className="mt-8 space-y-4 rounded-[1.5rem] bg-white p-6 shadow-lg sm:rounded-[2rem] sm:p-8">
               <div className="flex items-start gap-4">
                 <div className="shrink-0 rounded-full bg-[#dff5f2] p-3 text-[#54aba5]">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="font-display text-2xl font-semibold text-[#45353b]">
+                  <div className="font-display text-xl font-semibold text-[#45353b] sm:text-2xl">
                     Ras Al Khaimah, UAE
                   </div>
                   <p className="mt-1 font-body text-sm leading-7 text-[#76676e]">
@@ -51,7 +51,7 @@ export default function InquiryForm() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="font-display text-2xl font-semibold text-[#45353b]">
+                  <div className="font-display text-xl font-semibold text-[#45353b] sm:text-2xl">
                     +971 52 977 9108
                   </div>
                   <p className="font-body text-sm text-[#76676e]">Direct Planning Line</p>
@@ -63,7 +63,7 @@ export default function InquiryForm() {
                   <MessageCircle className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="font-display text-2xl font-semibold text-[#45353b]">
+                  <div className="font-display text-xl font-semibold text-[#45353b] sm:text-2xl">
                     WhatsApp Available
                   </div>
                   <p className="font-body text-sm text-[#76676e]">
@@ -74,7 +74,7 @@ export default function InquiryForm() {
             </div>
           </div>
 
-          <div className="rounded-[2.5rem] border border-white/80 bg-white p-8 shadow-[0_25px_80px_rgba(184,151,168,0.16)] lg:p-10">
+          <div className="rounded-[1.5rem] border border-white/80 bg-white p-5 shadow-[0_25px_80px_rgba(184,151,168,0.16)] sm:rounded-[2rem] sm:p-8 lg:rounded-[2.5rem] lg:p-10">
             {submitted ? (
               <div className="flex flex-col items-center justify-center py-16 text-center">
                 <div className="font-script text-6xl text-[#e4a7b9]">Thank You</div>
@@ -96,11 +96,11 @@ export default function InquiryForm() {
               </div>
             ) : (
               <>
-                <div className="mb-6 font-script-soft text-5xl text-[#dfa5b7]">
+                <div className="mb-5 font-script-soft text-4xl text-[#dfa5b7] sm:mb-6 sm:text-5xl">
                   Tell us your love story
                 </div>
                 <form onSubmit={handleSubmit} className="grid gap-4 font-body">
-                  <div className="grid gap-4 md:grid-cols-2">
+                  <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
                     <input
                       name="name"
                       value={form.name}
@@ -118,7 +118,7 @@ export default function InquiryForm() {
                       placeholder="Phone / WhatsApp Number"
                     />
                   </div>
-                  <div className="grid gap-4 md:grid-cols-2">
+                  <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
                     <input
                       name="email"
                       type="email"
@@ -135,7 +135,7 @@ export default function InquiryForm() {
                       placeholder="Preferred Event Date"
                     />
                   </div>
-                  <div className="grid gap-4 md:grid-cols-2">
+                  <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
                     <input
                       name="guests"
                       value={form.guests}
@@ -172,10 +172,10 @@ export default function InquiryForm() {
                     className="min-h-[160px] rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099] resize-none"
                     placeholder="Tell us about your vision, style, rituals, venue ideas or any special details..."
                   />
-                  <div className="flex flex-wrap gap-4 pt-2">
+                  <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-2 rounded-full bg-[#0fb7b1] px-8 py-3.5 font-body text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:bg-[#0da8a2]"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0fb7b1] px-8 py-3.5 font-body text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:bg-[#0da8a2] sm:w-auto sm:justify-start"
                     >
                       <Send className="h-4 w-4" />
                       Submit Bridal Inquiry
@@ -184,7 +184,7 @@ export default function InquiryForm() {
                       href="https://wa.me/971529779108"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[#ead4dd] px-7 py-3.5 font-body text-sm font-semibold text-[#b27c8f] transition hover:bg-[#fff6f9]"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#ead4dd] px-7 py-3.5 font-body text-sm font-semibold text-[#b27c8f] transition hover:bg-[#fff6f9] sm:w-auto sm:justify-start"
                     >
                       <MessageCircle className="h-4 w-4" />
                       Ask on WhatsApp

@@ -3,21 +3,21 @@ import { ABOUT_PILLARS } from "../data/content";
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
-      <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
+    <section id="about" className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-24">
         <div>
-          <div className="font-script-soft text-5xl text-[#e5a4b7] md:text-6xl">
+          <div className="font-script-soft text-4xl text-[#e5a4b7] sm:text-5xl md:text-6xl">
             About The Perfect Day
           </div>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight text-[#453339] md:text-5xl lg:text-6xl">
+          <h2 className="mt-2 font-display text-3xl font-semibold leading-tight text-[#453339] sm:text-4xl md:text-5xl lg:text-6xl">
             Every celebration should feel poetic, polished and deeply personal.
           </h2>
-          <p className="mt-6 font-body text-lg leading-8 text-[#73656c]">
+          <p className="mt-5 font-body text-base leading-7 text-[#73656c] md:text-lg md:leading-8">
             We design weddings and social occasions with a romantic, hospitality-led approach. Our
             team turns ideas into refined experiences through thoughtful planning, soft luxury
             aesthetics, and meticulous execution.
           </p>
-          <p className="mt-5 font-body text-lg leading-8 text-[#73656c]">
+          <p className="mt-4 font-body text-base leading-7 text-[#73656c] md:text-lg md:leading-8">
             From beachfront weddings in Ras Al Khaimah to glamorous celebrations in Dubai and
             destination wedding weekends, we create events that feel effortless for hosts and
             unforgettable for guests.
@@ -27,7 +27,7 @@ export default function About() {
           </a>
         </div>
 
-        <div className="grid gap-4 content-start">
+        <div className="grid gap-3 content-start">
           {ABOUT_PILLARS.map((item) => (
             <div
               key={item}
@@ -42,11 +42,11 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-20 overflow-hidden rounded-[3rem] shadow-[0_40px_100px_rgba(195,145,164,0.18)]">
+      <div className="mt-12 overflow-hidden rounded-[2rem] shadow-[0_40px_100px_rgba(195,145,164,0.18)] sm:rounded-[3rem] md:mt-20">
         <img
           src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1600&q=85"
           alt="Luxury wedding celebration"
-          className="h-[480px] w-full object-cover object-center"
+          className="h-56 w-full object-cover object-center sm:h-80 md:h-[480px]"
         />
       </div>
     </section>
