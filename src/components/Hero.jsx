@@ -30,7 +30,7 @@ export default function Hero() {
 
         <p className="hero-enter hero-fade-up mt-5 max-w-2xl font-body text-sm leading-7 text-white/75 sm:text-base md:mt-7 md:text-lg md:leading-8" style={{ animationDuration: '900ms', animationDelay: '650ms' }}>
           The Perfect Day crafts intimate, elegant and deeply personalized celebrations across
-          Ras Al Khaimah, Dubai and destination settings — blending hospitality, décor, emotion
+          Ras Al Khaimah, Dubai and other global destinations — blending hospitality, décor, emotion
           and seamless planning into moments that feel soft, luxurious and unforgettable.
         </p>
 

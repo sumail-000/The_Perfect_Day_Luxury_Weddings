@@ -10,7 +10,7 @@ export const NAV_LINKS = [
 export const WEDDING_SERVICES = [
   { title: "Full Planning & Management", desc: "End-to-end wedding planning from initial concept through flawless day-of execution." },
   { title: "Concept Design & Décor Styling", desc: "Bespoke concept design, décor styling and floral direction tailored to your story." },
-  { title: "Venue Sourcing", desc: "Curated venue sourcing across Ras Al Khaimah, Dubai and exclusive destination venues." },
+  { title: "Venue Sourcing", desc: "Curated venue sourcing across Ras Al Khaimah, Dubai and other global destinations." },
   { title: "Guest Hospitality & Concierge", desc: "Rooming lists, transport coordination, airport concierge and seamless guest hospitality." },
 ];
 
@@ -101,7 +101,7 @@ export const FAQS = [
   },
   {
     q: "Which locations do you serve?",
-    a: "We are based in Ras Al Khaimah and serve clients across the UAE, including Dubai, as well as select destination celebrations.",
+    a: "We are based in Ras Al Khaimah and serve clients across the UAE, including Dubai, as well as other global destinations worldwide.",
   },
   {
     q: "Do you support Indian and multicultural weddings?",
