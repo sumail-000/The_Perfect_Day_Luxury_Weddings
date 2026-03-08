@@ -1,0 +1,76 @@
+import { Sparkles, MessageCircle, ChevronDown } from "lucide-react";
+
+export default function Hero() {
+  return (
+    <section className="relative min-h-screen overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=90')",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a0f]/75 via-[#2c1018]/55 to-[#0a1a19]/60" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(235,188,205,0.12),transparent_50%)]" />
+
+      <div className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-16 text-center lg:px-10">
+        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 font-body text-xs uppercase tracking-[0.4em] text-white/80 backdrop-blur-sm">
+          <Sparkles className="h-3.5 w-3.5 text-[#f0b7c8]" />
+          Bespoke Social Experience · UAE
+        </div>
+
+        <div className="font-script text-5xl text-[#f0c8d8] md:text-7xl lg:text-8xl mb-2 drop-shadow-lg">
+          The art of a beautiful celebration
+        </div>
+
+        <h1 className="mt-3 max-w-5xl font-display text-4xl font-semibold leading-tight text-white md:text-6xl lg:text-7xl">
+          Ultra-luxury weddings and graceful social events with a{" "}
+          <em className="not-italic text-[#f0b7c8]">feminine signature.</em>
+        </h1>
+
+        <p className="mt-7 max-w-2xl font-body text-lg leading-8 text-white/75">
+          The Perfect Day crafts intimate, elegant and deeply personalized celebrations across
+          Ras Al Khaimah, Dubai and destination settings — blending hospitality, décor, emotion
+          and seamless planning into moments that feel soft, luxurious and unforgettable.
+        </p>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <a href="#inquiry" className="btn-primary text-base px-9 py-4 shadow-2xl">
+            Start Your Bridal Inquiry
+          </a>
+          <a
+            href="#gallery"
+            className="rounded-full border border-white/30 bg-white/10 px-9 py-4 font-body text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+          >
+            View Signature Gallery
+          </a>
+        </div>
+
+        <div className="mt-14 flex flex-wrap justify-center gap-6">
+          {["Luxury Weddings", "Feminine Styling", "UAE & Destination Events"].map((tag) => (
+            <div
+              key={tag}
+              className="rounded-full border border-white/15 bg-white/8 px-6 py-2.5 font-body text-sm text-white/70 backdrop-blur-sm"
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="https://wa.me/971529779108"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#25D366] px-5 py-3 font-body text-sm font-semibold text-white shadow-2xl transition hover:scale-105"
+        >
+          <MessageCircle className="h-5 w-5" />
+          <span className="hidden sm:inline">WhatsApp Us</span>
+        </a>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
+        <ChevronDown className="h-6 w-6" />
+      </div>
+    </section>
+  );
+}
