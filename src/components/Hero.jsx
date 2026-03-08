@@ -24,8 +24,8 @@ export default function Hero() {
         </div>
 
         <h1 className="hero-enter hero-fade-up mt-3 max-w-5xl font-display text-2xl font-semibold leading-tight text-white sm:text-3xl md:text-5xl lg:text-7xl" style={{ animationDuration: '1000ms', animationDelay: '500ms' }}>
-          Ultra-luxury weddings and graceful social events with a{" "}
-          <em className="not-italic text-[#f0b7c8]">feminine signature.</em>
+          Ultra-luxury weddings and graceful social events with{" "}
+          <em className="not-italic text-[#f0b7c8]">timeless elegance.</em>
         </h1>
 
         <p className="hero-enter hero-fade-up mt-5 max-w-2xl font-body text-sm leading-7 text-white/75 sm:text-base md:mt-7 md:text-lg md:leading-8" style={{ animationDuration: '900ms', animationDelay: '650ms' }}>
@@ -47,7 +47,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-enter hero-fade-in mt-8 flex flex-wrap justify-center gap-3 md:mt-14 md:gap-6" style={{ animationDuration: '1000ms', animationDelay: '1000ms' }}>
-          {["Luxury Weddings", "Feminine Styling", "UAE & Destination Events"].map((tag) => (
+          {["Luxury Weddings", "Bespoke Styling", "UAE & Destination Events"].map((tag) => (
             <div
               key={tag}
               className="rounded-full border border-white/15 bg-white/10 px-4 py-2 font-body text-xs text-white/70 backdrop-blur-sm sm:px-6 sm:py-2.5 sm:text-sm"

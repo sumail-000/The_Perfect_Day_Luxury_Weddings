@@ -51,13 +51,13 @@ export default function PlannerProfile() {
             <p className="mt-6 font-body text-base leading-7 text-[#6f6068] md:text-lg md:leading-8">
               Navdeep Tanwar is the Chief Planner of The Perfect Day, bringing more than 20 years
               of experience in planning, styling and executing luxury celebrations. A certified
-              wedding planner and interior designer, she is known for combining spatial aesthetics,
+              wedding planner and interior designer, he is known for combining spatial aesthetics,
               floral storytelling and seamless guest experience into beautifully orchestrated events.
             </p>
             <p className="mt-4 font-body text-base leading-7 text-[#6f6068] md:text-lg md:leading-8">
-              Over the course of her career, Navdeep has planned and executed more than 100 weddings
+              Over the course of his career, Navdeep has planned and executed more than 100 weddings
               across India, managing everything from intimate family functions to grand multi-day
-              destination celebrations. Her expertise lies in transforming each client vision into a
+              destination celebrations. His expertise lies in transforming each client vision into a
               refined, emotionally resonant and flawlessly delivered experience with a strong eye for
               design and detail.
             </p>

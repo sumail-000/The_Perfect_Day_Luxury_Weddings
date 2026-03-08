@@ -10,7 +10,7 @@ export default function Footer() {
             <img src="/logo.png" alt="The Perfect Day" className="h-12 w-auto object-contain brightness-0 invert opacity-90 sm:h-14 lg:h-[5.5rem]" />
             <p className="mt-5 max-w-sm font-body text-sm leading-7 text-white/55">
               Ultra-luxury wedding and event planning across Ras Al Khaimah, Dubai and destination
-              venues. We craft bespoke celebrations with a feminine signature.
+              venues. We craft bespoke celebrations with timeless elegance.
             </p>
             <div className="mt-8 flex gap-4">
               <a
