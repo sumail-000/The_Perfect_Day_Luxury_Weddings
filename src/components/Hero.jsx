@@ -1,4 +1,4 @@
-import { Gem, MessageCircle, ChevronDown } from "lucide-react";
+import { Gem, ChevronDown } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -57,15 +57,6 @@ export default function Hero() {
           ))}
         </div>
 
-        <a
-          href="https://wa.me/971529779108"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#25D366] px-5 py-3 font-body text-sm font-semibold text-white shadow-2xl transition hover:scale-105"
-        >
-          <MessageCircle className="h-5 w-5" />
-          <span className="hidden sm:inline">WhatsApp Us</span>
-        </a>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
