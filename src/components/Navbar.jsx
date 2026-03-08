@@ -20,7 +20,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_2px_30px_rgba(195,145,164,0.15)]"
+          ? "bg-[#fff6f8]/95 backdrop-blur-md shadow-[0_2px_30px_rgba(195,145,164,0.15)]"
           : "bg-gradient-to-b from-black/40 to-transparent"
       }`}
     >
@@ -67,7 +67,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-[#f1e1e7] bg-white/98 backdrop-blur-md px-6 py-6 md:hidden">
+        <div className="border-t border-[#f1e1e7] bg-[#fff6f8]/98 backdrop-blur-md px-6 py-6 md:hidden">
           <nav className="flex flex-col gap-5">
             {NAV_LINKS.map((item) => (
               <a
