@@ -20,7 +20,7 @@ export default function InquiryForm() {
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div data-reveal="left">
-            <div className="font-script text-5xl text-[#e4a7b9] sm:text-6xl">Bridal Inquiry</div>
+            <div className="font-script text-5xl text-[#e4a7b9] sm:text-6xl">Inquire your Perfect Day</div>
             <h2 className="mt-2 font-display text-3xl font-semibold text-[#47363c] sm:text-4xl md:text-5xl lg:text-6xl">
               Begin your journey with The Perfect Day.
             </h2>
@@ -67,7 +67,7 @@ export default function InquiryForm() {
                     WhatsApp Available
                   </div>
                   <p className="font-body text-sm text-[#76676e]">
-                    Fast responses for bridal consultations
+                    Fast responses for all inquiries
                   </p>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export default function InquiryForm() {
                       className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0fb7b1] px-8 py-3.5 font-body text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:bg-[#0da8a2] sm:w-auto sm:justify-start"
                     >
                       <Send className="h-4 w-4" />
-                      Submit Bridal Inquiry
+                      Submit Your Inquiry
                     </button>
                     <a
                       href="https://wa.me/971529779108"

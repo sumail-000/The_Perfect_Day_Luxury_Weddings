@@ -36,7 +36,7 @@ export default function Hero() {
 
         <div className="hero-enter hero-fade-up mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4" style={{ animationDuration: '900ms', animationDelay: '800ms' }}>
           <a href="#inquiry" className="btn-primary w-full px-8 py-3.5 text-sm shadow-2xl sm:w-auto sm:px-9 sm:py-4 sm:text-base">
-            Start Your Bridal Inquiry
+            Let's plan your Perfect Day
           </a>
           <a
             href="#gallery"
