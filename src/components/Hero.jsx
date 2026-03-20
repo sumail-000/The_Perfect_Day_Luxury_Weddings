@@ -1,13 +1,15 @@
 import { Gem, ChevronDown } from "lucide-react";
+import { useContent } from "../context/ContentContext";
 
 export default function Hero() {
+  const { hero } = useContent();
+
   return (
     <section className="relative min-h-screen overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=90')",
+          backgroundImage: `url('${hero.background_image}')`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a0f]/75 via-[#2c1018]/55 to-[#0a1a19]/60" />
@@ -16,38 +18,36 @@ export default function Hero() {
       <div className="relative flex min-h-screen flex-col items-center justify-center px-5 pt-28 pb-16 text-center sm:px-8 lg:px-10">
         <div className="hero-enter hero-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-body text-[10px] uppercase tracking-[0.3em] text-white/80 backdrop-blur-sm sm:mb-8 sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.4em]" style={{ animationDuration: '900ms', animationDelay: '100ms' }}>
           <Gem className="h-3 w-3 text-[#f0b7c8]" />
-          Bespoke Social Experience · UAE
+          {hero.badge}
         </div>
 
         <div className="hero-enter hero-fade-up font-script mb-2 text-4xl text-[#f0c8d8] drop-shadow-lg sm:text-5xl md:text-7xl lg:text-8xl" style={{ animationDuration: '1000ms', animationDelay: '300ms' }}>
-          The art of a beautiful celebration
+          {hero.script_heading}
         </div>
 
         <h1 className="hero-enter hero-fade-up mt-3 max-w-5xl font-display text-2xl font-semibold leading-tight text-white sm:text-3xl md:text-5xl lg:text-7xl" style={{ animationDuration: '1000ms', animationDelay: '500ms' }}>
-          Ultra-luxury weddings and graceful social events with{" "}
-          <em className="not-italic text-[#f0b7c8]">timeless elegance.</em>
+          {hero.heading}{" "}
+          <em className="not-italic text-[#f0b7c8]">{hero.heading_accent}</em>
         </h1>
 
         <p className="hero-enter hero-fade-up mt-5 max-w-2xl font-body text-sm leading-7 text-white/75 sm:text-base md:mt-7 md:text-lg md:leading-8" style={{ animationDuration: '900ms', animationDelay: '650ms' }}>
-          The Perfect Day crafts intimate, elegant and deeply personalized celebrations across
-          Ras Al Khaimah, Dubai and other global destinations — blending hospitality, décor, emotion
-          and seamless planning into moments that feel soft, luxurious and unforgettable.
+          {hero.description}
         </p>
 
         <div className="hero-enter hero-fade-up mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4" style={{ animationDuration: '900ms', animationDelay: '800ms' }}>
           <a href="#inquiry" className="btn-primary w-full px-8 py-3.5 text-sm shadow-2xl sm:w-auto sm:px-9 sm:py-4 sm:text-base">
-            Let's plan your Perfect Day
+            {hero.cta_primary}
           </a>
           <a
             href="#gallery"
             className="w-full rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-center font-body text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20 sm:w-auto sm:px-9 sm:py-4"
           >
-            View Signature Gallery
+            {hero.cta_secondary}
           </a>
         </div>
 
         <div className="hero-enter hero-fade-in mt-8 flex flex-wrap justify-center gap-3 md:mt-14 md:gap-6" style={{ animationDuration: '1000ms', animationDelay: '1000ms' }}>
-          {["Luxury Weddings", "Bespoke Styling", "UAE & Destination Events"].map((tag) => (
+          {(hero.tags || []).map((tag) => (
             <div
               key={tag}
               className="rounded-full border border-white/15 bg-white/10 px-4 py-2 font-body text-xs text-white/70 backdrop-blur-sm sm:px-6 sm:py-2.5 sm:text-sm"

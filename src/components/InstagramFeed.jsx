@@ -1,7 +1,9 @@
 import { Instagram, MessageCircle } from "lucide-react";
-import { INSTAGRAM_IMAGES } from "../data/content";
+import { useContent } from "../context/ContentContext";
 
 export default function InstagramFeed() {
+  const { instagramImages, contact } = useContent();
+
   return (
     <section className="bg-[#111111] text-white">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
@@ -20,16 +22,16 @@ export default function InstagramFeed() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="https://instagram.com/tpdweddings"
+                href={contact.instagram_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-body text-sm font-semibold text-[#111]"
               >
                 <Instagram className="h-4 w-4" />
-                @tpdweddings
+                @{contact.instagram_handle}
               </a>
               <a
-                href="https://wa.me/971529779108"
+                href={`https://wa.me/${contact.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-body text-sm font-semibold text-white transition hover:bg-white/10"
@@ -41,28 +43,31 @@ export default function InstagramFeed() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {INSTAGRAM_IMAGES.map((image, index) => (
-              <a
-                key={index}
-                data-reveal="scale"
-                data-delay={String(index * 100)}
-                href="https://instagram.com/tpdweddings"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group overflow-hidden rounded-[1.5rem] bg-white/5"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={image}
-                    alt={`Instagram moment ${index + 1}`}
-                    className="h-32 w-full object-cover transition duration-700 group-hover:scale-110 sm:h-40 md:h-48"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/30">
-                    <Instagram className="h-6 w-6 text-white opacity-0 transition duration-300 group-hover:opacity-100" />
+            {instagramImages.map((item, index) => {
+              const url = typeof item === "string" ? item : item.image_url;
+              return (
+                <a
+                  key={item.id || index}
+                  data-reveal="scale"
+                  data-delay={String(index * 100)}
+                  href={contact.instagram_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group overflow-hidden rounded-[1.5rem] bg-white/5"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={url}
+                      alt={`Instagram moment ${index + 1}`}
+                      className="h-32 w-full object-cover transition duration-700 group-hover:scale-110 sm:h-40 md:h-48"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/30">
+                      <Instagram className="h-6 w-6 text-white opacity-0 transition duration-300 group-hover:opacity-100" />
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

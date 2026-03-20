@@ -1,19 +1,39 @@
 import { useState } from "react";
-import { MapPin, Phone, MessageCircle, Send } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Send, Loader2 } from "lucide-react";
+import { useContent } from "../context/ContentContext";
+import { supabase } from "../lib/supabase";
 
 export default function InquiryForm() {
+  const { contact } = useContent();
   const [form, setForm] = useState({
     name: "", phone: "", email: "", date: "",
     guests: "", location: "", type: "", message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const { error: fnError } = await supabase.functions.invoke("send-inquiry", {
+        body: form,
+      });
+      if (fnError) throw fnError;
+      setSubmitted(true);
+    } catch (err) {
+      setError("Something went wrong. Please try WhatsApp or call us directly.");
+      console.error(err);
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  const waLink = `https://wa.me/${contact.whatsapp_number}`;
 
   return (
     <section id="inquiry" className="bg-gradient-to-br from-[#f9edf2] via-[#fffaf9] to-[#ecf9f8]">
@@ -37,11 +57,12 @@ export default function InquiryForm() {
                 </div>
                 <div>
                   <div className="font-display text-xl font-semibold text-[#45353b] sm:text-2xl">
-                    Ras Al Khaimah, UAE
+                    {contact.address_line_3 ? contact.address_line_3.split(",")[0] : "Ras Al Khaimah"}, UAE
                   </div>
                   <p className="mt-1 font-body text-sm leading-7 text-[#76676e]">
-                    Compass Co-working Center, Al Shohada Road,<br />
-                    Street C – Al Hamra Area, P.O. Box 16111
+                    {contact.address_line_1}<br />
+                    {contact.address_line_2}<br />
+                    {contact.address_line_3}, {contact.address_line_4}
                   </p>
                 </div>
               </div>
@@ -52,7 +73,7 @@ export default function InquiryForm() {
                 </div>
                 <div>
                   <div className="font-display text-xl font-semibold text-[#45353b] sm:text-2xl">
-                    +971 52 977 9108
+                    {contact.phone}
                   </div>
                   <p className="font-body text-sm text-[#76676e]">Direct Planning Line</p>
                 </div>
@@ -85,12 +106,7 @@ export default function InquiryForm() {
                   Navdeep will personally review your details and reach out within 24 hours to
                   begin your bespoke planning journey.
                 </p>
-                <a
-                  href="https://wa.me/971529779108"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary mt-8"
-                >
+                <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8">
                   Chat on WhatsApp Now
                 </a>
               </div>
@@ -99,64 +115,25 @@ export default function InquiryForm() {
                 <div className="mb-5 font-script-soft text-4xl text-[#dfa5b7] sm:mb-6 sm:text-5xl">
                   Tell us your love story
                 </div>
+                {error && (
+                  <div className="mb-3 rounded-2xl bg-red-50 border border-red-200 px-4 py-3 font-body text-sm text-red-600">
+                    {error}
+                  </div>
+                )}
                 <form onSubmit={handleSubmit} className="grid gap-4 font-body">
                   <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-                    <input
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]"
-                      placeholder="Bride / Couple Name"
-                    />
-                    <input
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      required
-                      className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]"
-                      placeholder="Phone / WhatsApp Number"
-                    />
+                    <input name="name" value={form.name} onChange={handleChange} required className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]" placeholder="Bride / Couple Name" />
+                    <input name="phone" value={form.phone} onChange={handleChange} required className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]" placeholder="Phone / WhatsApp Number" />
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-                    <input
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]"
-                      placeholder="Email Address"
-                    />
-                    <input
-                      name="date"
-                      value={form.date}
-                      onChange={handleChange}
-                      className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]"
-                      placeholder="Preferred Event Date"
-                    />
+                    <input name="email" type="email" value={form.email} onChange={handleChange} className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]" placeholder="Email Address" />
+                    <input name="date" value={form.date} onChange={handleChange} className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]" placeholder="Preferred Event Date" />
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-                    <input
-                      name="guests"
-                      value={form.guests}
-                      onChange={handleChange}
-                      className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]"
-                      placeholder="Estimated Guest Count"
-                    />
-                    <input
-                      name="location"
-                      value={form.location}
-                      onChange={handleChange}
-                      className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]"
-                      placeholder="Preferred Location / Venue"
-                    />
+                    <input name="guests" value={form.guests} onChange={handleChange} className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]" placeholder="Estimated Guest Count" />
+                    <input name="location" value={form.location} onChange={handleChange} className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099]" placeholder="Preferred Location / Venue" />
                   </div>
-                  <select
-                    name="type"
-                    value={form.type}
-                    onChange={handleChange}
-                    className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#7b6b72] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10"
-                  >
+                  <select name="type" value={form.type} onChange={handleChange} className="rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#7b6b72] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10">
                     <option value="">Type of Celebration</option>
                     <option>Wedding</option>
                     <option>Engagement</option>
@@ -165,27 +142,13 @@ export default function InquiryForm() {
                     <option>Private Social Event</option>
                     <option>Anniversary</option>
                   </select>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    className="min-h-[160px] rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099] resize-none"
-                    placeholder="Tell us about your vision, style, rituals, venue ideas or any special details..."
-                  />
+                  <textarea name="message" value={form.message} onChange={handleChange} className="min-h-[160px] rounded-2xl border border-[#eddce3] bg-[#fdfafa] px-5 py-4 text-[#3c2d31] outline-none transition focus:border-[#0fb7b1] focus:ring-2 focus:ring-[#0fb7b1]/10 placeholder:text-[#b09099] resize-none" placeholder="Tell us about your vision, style, rituals, venue ideas or any special details..." />
                   <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
-                    <button
-                      type="submit"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0fb7b1] px-8 py-3.5 font-body text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:bg-[#0da8a2] sm:w-auto sm:justify-start"
-                    >
-                      <Send className="h-4 w-4" />
-                      Submit Your Inquiry
+                    <button type="submit" disabled={submitting} className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0fb7b1] px-8 py-3.5 font-body text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] hover:bg-[#0da8a2] disabled:opacity-50 disabled:hover:scale-100 sm:w-auto sm:justify-start">
+                      {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                      {submitting ? "Sending..." : "Submit Your Inquiry"}
                     </button>
-                    <a
-                      href="https://wa.me/971529779108"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#ead4dd] px-7 py-3.5 font-body text-sm font-semibold text-[#b27c8f] transition hover:bg-[#fff6f9] sm:w-auto sm:justify-start"
-                    >
+                    <a href={waLink} target="_blank" rel="noopener noreferrer" className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#ead4dd] px-7 py-3.5 font-body text-sm font-semibold text-[#b27c8f] transition hover:bg-[#fff6f9] sm:w-auto sm:justify-start">
                       <MessageCircle className="h-4 w-4" />
                       Ask on WhatsApp
                     </a>

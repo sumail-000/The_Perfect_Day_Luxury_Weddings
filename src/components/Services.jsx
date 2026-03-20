@@ -1,5 +1,5 @@
 import { Flower2, GlassWater, MapPin } from "lucide-react";
-import { WEDDING_SERVICES, SOCIAL_SERVICES, DESTINATION_SERVICES } from "../data/content";
+import { useContent } from "../context/ContentContext";
 
 function ServiceCard({ icon: Icon, title, desc, accent }) {
   return (
@@ -33,7 +33,7 @@ function ServiceSection({ id, bgClass, scriptClass, scriptText, heading, service
         </div>
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
           {services.map((item, i) => (
-            <div key={item.title} data-reveal="up-sm" data-delay={String(i * 150)}>
+            <div key={item.id || item.title} data-reveal="up-sm" data-delay={String(i * 150)}>
               <ServiceCard icon={icon} title={item.title} desc={item.desc} accent={accent} />
             </div>
           ))}
@@ -44,6 +44,7 @@ function ServiceSection({ id, bgClass, scriptClass, scriptText, heading, service
 }
 
 export function WeddingsSection() {
+  const { weddingServices } = useContent();
   return (
     <ServiceSection
       id="weddings"
@@ -51,7 +52,7 @@ export function WeddingsSection() {
       scriptClass="text-[#e7a8bb]"
       scriptText="Weddings"
       heading="Curated wedding experiences with softness and grandeur."
-      services={WEDDING_SERVICES}
+      services={weddingServices}
       icon={Flower2}
       accent={{ border: "#efdbe3", iconBg: "#f9e6ed", iconColor: "#c17b94" }}
       image="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80"
@@ -60,6 +61,7 @@ export function WeddingsSection() {
 }
 
 export function SocialEventsSection() {
+  const { socialServices } = useContent();
   return (
     <ServiceSection
       id="social-events"
@@ -67,7 +69,7 @@ export function SocialEventsSection() {
       scriptClass="text-[#72c7c0]"
       scriptText="Social Events"
       heading="Private celebrations designed with charm and finesse."
-      services={SOCIAL_SERVICES}
+      services={socialServices}
       icon={GlassWater}
       accent={{ border: "#e3f1ef", iconBg: "#dff5f2", iconColor: "#5ab1ab" }}
       image="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80"
@@ -76,6 +78,7 @@ export function SocialEventsSection() {
 }
 
 export function DestinationSection() {
+  const { destinationServices } = useContent();
   return (
     <ServiceSection
       id="destination"
@@ -83,7 +86,7 @@ export function DestinationSection() {
       scriptClass="text-[#75c9c1]"
       scriptText="Destination Weddings"
       heading="Seamless multi-day celebrations for families travelling the world."
-      services={DESTINATION_SERVICES}
+      services={destinationServices}
       icon={MapPin}
       accent={{ border: "#ddeceb", iconBg: "#dff5f2", iconColor: "#59ada7" }}
       image="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80"

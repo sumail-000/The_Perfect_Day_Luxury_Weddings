@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
-import { NAV_LINKS } from "../data/content";
+import { useContent } from "../context/ContentContext";
 
 export default function Navbar() {
+  const { navLinks, contact } = useContent();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [atTop, setAtTop] = useState(true);
@@ -15,6 +16,8 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const waLink = `https://wa.me/${contact.whatsapp_number}`;
 
   return (
     <header
@@ -34,7 +37,7 @@ export default function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((item) => (
+          {navLinks.map((item) => (
             <a key={item.label} href={item.href}
               className={`font-body text-sm font-medium tracking-wide transition-colors duration-200 ${
                 scrolled ? "text-[#7b5e67] hover:text-[#0fb7b1]" : "text-white/90 hover:text-white"
@@ -47,7 +50,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-4 md:flex">
           <a
-            href="https://wa.me/971529779108"
+            href={waLink}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 font-body text-sm font-semibold text-white shadow-md transition-transform hover:scale-105"
@@ -69,7 +72,7 @@ export default function Navbar() {
       {open && (
         <div className="border-t border-[#f1e1e7] bg-[#fff6f8]/98 backdrop-blur-md px-6 py-6 md:hidden">
           <nav className="flex flex-col gap-5">
-            {NAV_LINKS.map((item) => (
+            {navLinks.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
@@ -80,7 +83,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://wa.me/971529779108"
+              href={waLink}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 flex w-fit items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 font-body text-sm font-semibold text-white"

@@ -1,7 +1,10 @@
-import { Instagram, MessageCircle, Phone, MapPin, Heart } from "lucide-react";
-import { NAV_LINKS } from "../data/content";
+import { Instagram, MessageCircle, Phone, MapPin } from "lucide-react";
+import { useContent } from "../context/ContentContext";
 
 export default function Footer() {
+  const { navLinks, contact } = useContent();
+  const waLink = `https://wa.me/${contact.whatsapp_number}`;
+
   return (
     <footer className="bg-[#110d0f] text-white">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
@@ -9,11 +12,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <img src="/logo.png" alt="The Perfect Day" className="h-12 w-auto object-contain brightness-0 invert opacity-90 sm:h-14 lg:h-[5.5rem]" />
             <p className="mt-5 max-w-sm font-body text-sm leading-7 text-white/55">
-              Ultra-luxury wedding and event planning across Ras Al Khaimah, Dubai and other global destinations. We craft bespoke celebrations with timeless elegance.
+              {contact.footer_tagline}
             </p>
             <div className="mt-8 flex gap-4">
               <a
-                href="https://instagram.com/tpdweddings"
+                href={contact.instagram_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition hover:border-[#f0b7c8] hover:text-[#f0b7c8]"
@@ -21,7 +24,7 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://wa.me/971529779108"
+                href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition hover:border-[#25D366] hover:text-[#25D366]"
@@ -29,7 +32,7 @@ export default function Footer() {
                 <MessageCircle className="h-5 w-5" />
               </a>
               <a
-                href="tel:+971529779108"
+                href={`tel:${contact.phone?.replace(/\s/g, "")}`}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition hover:border-[#7fc8c2] hover:text-[#7fc8c2]"
               >
                 <Phone className="h-5 w-5" />
@@ -42,7 +45,7 @@ export default function Footer() {
               Navigation
             </h4>
             <nav className="flex flex-col gap-3">
-              {NAV_LINKS.map((item) => (
+              {navLinks.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
@@ -62,26 +65,21 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#7fc8c2]" />
                 <p className="font-body text-sm leading-6 text-white/55">
-                  Compass Co-working Center<br />
-                  Al Shohada Road, Street C<br />
-                  Al Hamra Area, Ras Al Khaimah<br />
-                  P.O. Box 16111, UAE
+                  {contact.address_line_1}<br />
+                  {contact.address_line_2}<br />
+                  {contact.address_line_3}<br />
+                  {contact.address_line_4}
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-[#f0b7c8]" />
-                <a href="tel:+971529779108" className="font-body text-sm text-white/55 hover:text-white transition">
-                  +971 52 977 9108
+                <a href={`tel:${contact.phone?.replace(/\s/g, "")}`} className="font-body text-sm text-white/55 hover:text-white transition">
+                  {contact.phone}
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <MessageCircle className="h-4 w-4 shrink-0 text-[#25D366]" />
-                <a
-                  href="https://wa.me/971529779108"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-body text-sm text-white/55 hover:text-white transition"
-                >
+                <a href={waLink} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-white/55 hover:text-white transition">
                   WhatsApp Available
                 </a>
               </div>

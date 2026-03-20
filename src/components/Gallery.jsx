@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { GALLERY_ITEMS } from "../data/content";
+import { useContent } from "../context/ContentContext";
 
 export default function Gallery() {
+  const { galleryItems } = useContent();
   const [lightbox, setLightbox] = useState(null);
-  const prev = () => setLightbox((i) => (i === 0 ? GALLERY_ITEMS.length - 1 : i - 1));
-  const next = () => setLightbox((i) => (i === GALLERY_ITEMS.length - 1 ? 0 : i + 1));
+  const prev = () => setLightbox((i) => (i === 0 ? galleryItems.length - 1 : i - 1));
+  const next = () => setLightbox((i) => (i === galleryItems.length - 1 ? 0 : i + 1));
 
   return (
     <section id="gallery" className="mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-20 lg:px-10 lg:py-28">
@@ -27,9 +28,9 @@ export default function Gallery() {
       </div>
 
       <div className="columns-1 gap-4 sm:columns-2 sm:gap-5 xl:columns-3">
-        {GALLERY_ITEMS.map((item, idx) => (
+        {galleryItems.map((item, idx) => (
           <div
-            key={item.title}
+            key={item.id || item.title}
             data-reveal="scale"
             data-delay={String((idx % 3) * 100)}
             className="group mb-5 cursor-pointer overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_60px_rgba(202,178,188,0.18)] break-inside-avoid transition hover:shadow-[0_30px_80px_rgba(202,178,188,0.30)]"
@@ -37,7 +38,7 @@ export default function Gallery() {
           >
             <div className="overflow-hidden">
               <img
-                src={item.image}
+                src={item.image_url || item.image}
                 alt={item.title}
                 className="w-full object-cover transition duration-700 group-hover:scale-105"
                 style={{ height: idx % 3 === 0 ? "clamp(240px, 40vw, 420px)" : "clamp(180px, 30vw, 300px)" }}
@@ -69,14 +70,14 @@ export default function Gallery() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={GALLERY_ITEMS[lightbox].image.replace("w=800", "w=1400")}
-              alt={GALLERY_ITEMS[lightbox].title}
+              src={(galleryItems[lightbox].image_url || galleryItems[lightbox].image).replace("w=800", "w=1400")}
+              alt={galleryItems[lightbox].title}
               className="max-h-[85vh] w-full object-contain"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-              <div className="font-script-soft text-3xl text-white">{GALLERY_ITEMS[lightbox].title}</div>
+              <div className="font-script-soft text-3xl text-white">{galleryItems[lightbox].title}</div>
               <div className="mt-1 font-body text-xs uppercase tracking-[0.25em] text-white/70">
-                {GALLERY_ITEMS[lightbox].subtitle}
+                {galleryItems[lightbox].subtitle}
               </div>
             </div>
           </div>
